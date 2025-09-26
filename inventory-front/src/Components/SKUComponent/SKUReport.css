@@ -1,0 +1,59 @@
+.text-center {
+  padding: 30px;
+  background-color: #f8f9fa;
+}
+
+.text-center h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #22037d;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.table {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table thead {
+  background-color: #22037d;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px;
+}
+
+.btn-info,
+.btn-danger {
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 0 5px;
+}
+
+.btn-info {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+}
