@@ -1,7 +1,8 @@
 package edu.infosys.inventoryApplication.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.infosys.inventoryApplication.bean.Product;
@@ -28,11 +28,9 @@ public class ProductController {
     private ProductDaoImp dao;
 
     @PostMapping("/addProduct")
-    public ResponseEntity<?> addProduct(@RequestBody Product product) {
-        product.setProductId(dao.generateId());
+    public void addProduct(@RequestBody Product product) {
         product = service.setSalesPrice(product);
         dao.save(product);
-        return ResponseEntity.ok(product);
     }
 
     @GetMapping("/product/{id}")
@@ -46,34 +44,24 @@ public class ProductController {
     }
 
     @GetMapping("/allProducts")
-    public java.util.List<Product> showAllProducts() {
+    public List<Product> showAllProducts() {
         return dao.showAllProducts();
     }
 
-    @GetMapping("/reorderLevel/{id}")
-    public Double findReorderLevelByProductId(@PathVariable String id) {
-        return dao.findReorderLevelByProductId(id);
-    }
-
-    @PutMapping("/updateProduct")
-    public Product updateProduct(@RequestBody Product product) {
-        dao.update(product);
-        return product;
-    }
-
-    @PutMapping("/editStock/{id}")
-    public Product stockEdit(@PathVariable String id, @RequestParam Double quantity, @RequestParam int flag) {
-        Product product = dao.findProductById(id);
+    @PutMapping("/editStock/{quantity}/{flag}")
+    public void stockEdit(@RequestBody Product product, @PathVariable Double quantity, @PathVariable int flag) {
         product = service.stockEdit(product, quantity, flag);
         dao.update(product);
-        return product;
     }
 
-
-    @GetMapping("/checkStock/{id}")
-    public String stockChecking(@PathVariable String id) {
-        Product product = dao.findProductById(id);
-        return service.stockChecking(product);
+    @GetMapping("/generateId")
+    public String generateId() {
+        return dao.generateId();
     }
 
+    @PutMapping("/updateProductPrice")
+    public void updateProductPrice(@RequestBody Product product) {
+        product = service.setSalesPrice(product);
+        dao.update(product);
+    }
 }

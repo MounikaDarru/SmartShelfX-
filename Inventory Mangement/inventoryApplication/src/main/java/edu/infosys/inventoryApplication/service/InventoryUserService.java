@@ -1,5 +1,7 @@
 package edu.infosys.inventoryApplication.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,9 +40,9 @@ public class InventoryUserService implements UserDetailsService {
 			
 		}
 
-		// public List<String> getUserByRole(String role) {
-		// 	return repository.findByRole(role);
-		// }	
+		public List<String> getUserByRole(String role) {
+			return repository.findByRole(role);
+		}	
 
 		public InventoryUser getUser() {
 		  return user;

@@ -6,6 +6,7 @@ import '../../LoginView.css';
 const ProductAddition = () => {
     const [product, setProduct] = useState({
         productId: "",
+        vendorId: "",
         productName: "",
         sku: "",
         purchasePrice: "",
@@ -88,6 +89,11 @@ const ProductAddition = () => {
                     <label>Product Id</label>
                     <input placeholder="productId" name="productId" value={product.productId} onChange={(event) => onChangeHandler(event)}/>
                     {errors.productId && <p>{errors.productId}</p>}
+                </div>
+                <div className="form-group">
+                    <label>Vendor Id</label>
+                    <input placeholder="vendorId" name="vendorId" value={product.vendorId} onChange={(event) => onChangeHandler(event)}/>
+                    {errors.vendorId && <p>{errors.vendorId}</p>}
                 </div>
                 <div className="form-group">
                     <label>Product Name</label>

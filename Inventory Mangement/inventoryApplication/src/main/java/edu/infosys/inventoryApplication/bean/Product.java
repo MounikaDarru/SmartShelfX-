@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 public class Product {
     @Id
     private String productId;
+    private String vendorId;
     private String productName;
     private String sku;
     private Double purchasePrice;
@@ -24,6 +25,14 @@ public class Product {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getVendorId(){
+        return vendorId;
+    }
+
+    public void setVendorId(String vendorId){
+        this.vendorId = vendorId;
     }
 
     public String getProductName() {

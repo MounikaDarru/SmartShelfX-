@@ -19,18 +19,14 @@ export const showAllProducts = () => {
     return axios.get(PRODUCT_URL + '/allProducts');
 }
 
-export const findReorderLevelByProductId = (id) => {
-    return axios.get(PRODUCT_URL + '/reorderLevel/' + id);
+export const stockEdit = (product, quantity, flag) => {
+    return axios.put(PRODUCT_URL + '/editStock/' + quantity + '/' + flag, product);
 }
 
-export const updateProduct = (product) => {
-    return axios.put(PRODUCT_URL + '/updateProduct' + product);
+export const generateId = () => {
+    return axios.get(PRODUCT_URL + '/generateId');
 }
 
-export const stockEdit = (id, quantity, flag) => {
-    return axios.put(PRODUCT_URL + '/editStock/' + id + '?quantity=' + quantity + '&flag=' + flag);
-}
-
-export const stockChecking = (id) => {
-    return axios.get(PRODUCT_URL + '/checkStock/' + id);
+export const updateProductPrice = (product) => {
+    return axios.put(PRODUCT_URL + '/updateProductPrice' + product);
 }
