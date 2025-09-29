@@ -10,7 +10,6 @@ const ProductAddition = () => {
         productName: "",
         sku: "",
         purchasePrice: "",
-        salesPrice: "",
         reorderLevel: "",
         stock: ""
     })
@@ -32,6 +31,11 @@ const ProductAddition = () => {
             navigate('/AdminMenu');    
         });
     };
+
+    const handleCancel = (event) => {
+        event.preventDefault();
+        navigate('/AdminMenu');
+    }
 
     const handleValidation = (event) => {
         event.preventDefault();
@@ -55,11 +59,6 @@ const ProductAddition = () => {
 
         if(!product.purchasePrice.trim()) {
             tempErrors.purchasePrice = "Purchase Price is required"
-            isValid = false;
-        }
-
-        if(!product.salesPrice.trim()) {
-            tempErrors.salesPrice = "Sales Price is required"
             isValid = false;
         }
 
@@ -111,11 +110,6 @@ const ProductAddition = () => {
                     {errors.purchasePrice && <p>{errors.purchasePrice}</p>}
                 </div>
                 <div className="form-group">
-                    <label>Sales Price</label>
-                    <input placeholder="salesPrice" name="salesPrice" value={product.salesPrice} onChange={(event) => onChangeHandler(event)}/>
-                    {errors.salesPrice && <p>{errors.salesPrice}</p>}
-                </div>
-                <div className="form-group">
                     <label>Reorder Level</label>
                     <input placeholder="reorderLevel" name="reorderLevel" value={product.reorderLevel} onChange={(event) => onChangeHandler(event)}/>
                     {errors.reorderLevel && <p>{errors.reorderLevel}</p>}
@@ -126,7 +120,10 @@ const ProductAddition = () => {
                     {errors.stock && <p>{errors.stock}</p>}
                 </div>
                 <br/>
-                <button className='btn btn-primary' onClick={handleValidation}>ADD</button>
+                <div style={{ display: 'flex', gap: '10px', justifyContent:'center' }}>
+                      <button className='btn bt-outline-primary text-primary text-decoration-none' onClick={handleCancel} style={{ marginRight: '10px', border: '1px solid #0d6efd', color: '#0d6efd', background: 'white', width:'200px', fontWeight: 'bold' }}>CANCEL</button>
+                      <button className='btn btn-primary' onClick={handleValidation} style={{width:'200px', fontWeight: 'bold'}}>ADD</button>
+                </div>
             </form>
         </div>
       )

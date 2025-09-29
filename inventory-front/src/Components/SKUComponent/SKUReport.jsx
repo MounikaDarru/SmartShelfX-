@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {Link} from 'react-router-dom';
 import '../../LoginView.css';
 import {showAllSKUs, removeSKU} from '../../Services/SKUService';
+import { ChevronLeft } from "lucide-react";
 
 import { update } from "../../Services/SKUService";
 
@@ -32,6 +33,11 @@ export const SkuUpdate = () => {
         });
     };
 
+    const handleCancel = (event) => {
+        event.preventDefault();
+        navigate('/SkuReport');
+    }
+
     const handleValidation = (event) => {
         event.preventDefault();
         let tempErrors = {};
@@ -59,7 +65,10 @@ export const SkuUpdate = () => {
                         {errors.skuDescription && <p>{errors.skuDescription}</p>}
                     </div>
                     <br/>
-                    <button className='btn btn-primary' onClick={handleValidation}>ADD</button>
+                    <div style={{ display: 'flex', gap: '10px', justifyContent:'center' }}>
+                      <button className='btn bt-outline-primary text-primary text-decoration-none' onClick={handleCancel} style={{ marginRight: '10px', border: '1px solid #0d6efd', color: '#0d6efd', background: 'white', width:'200px', fontWeight: 'bold' }}>CANCEL</button>
+                      <button className='btn btn-primary' onClick={handleValidation} style={{width:'200px', fontWeight: 'bold'}}>ADD</button>
+                    </div>
                 </form>
             </div>
     ) ;
@@ -96,69 +105,43 @@ const SKUReport = () => {
     return (
         <div className="text-center">
             <div>
-            <h2 className="text-center">SKU List</h2>
-            <hr />
+            <div onClick={returnBack} style={{display: 'flex', justifyContent: 'flex-start', cursor: 'pointer', margin: '20px', marginLeft: '50px', fontWeight: 'bold'}}><ChevronLeft />Back</div>
+            </div>
             <div className="row">
                 <table className="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                    <th>SKU ID</th>
-                    <th>SKU Description</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {skuList.map((sku) => (
-                    <tr key={sku.skuId}>
-                        <td>{sku.skuId}</td>
-                        <td>{sku.skuDescription}</td>
-                        <td>
-                        <Link to={`/update-sku/${sku.skuId}`}>
-                            <button className="btn btn-info">Update</button>
-                        </Link>
-                        </td>
-                        <td>
-                        <button
-                            onClick={() => deleteSKU(sku.skuId)}
-                            className="btn btn-danger"
-                        >
-                            Delete
-                        </button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
+                    <thead>
+                        <tr>
+                        <th>SKU ID</th>
+                        <th>SKU Description</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {skuList.map((sku) => (
+                        <tr key={sku.skuId}>
+                            <td>{sku.skuId}</td>
+                            <td>{sku.skuDescription}</td>
+                            <td>
+                            <Link to={`/update-sku/${sku.skuId}`}>
+                                <button className="btn btn-info">Update</button>
+                            </Link>
+                            </td>
+                            <td>
+                            <button
+                                onClick={() => deleteSKU(sku.skuId)}
+                                className="btn btn-danger"
+                            >
+                                Delete
+                            </button>
+                            </td>
+                        </tr>
+                        ))}
+                    </tbody>
                 </table>
-            </div>
             </div>
         </div>
     );
 }
 
 export default SKUReport;
-
-
-// <div>
-//             <br/>
-//             <div className = ".container">
-//                 <div className = "row">
-//                     <div className = "card col-md-2 offset-md-3 offset-md-3">
-//                         <div className = "login-box">
-//                             <h2 className="text-center"><u>New User Registration</u> </h2>
-//                             <br/>
-//                             <form  method="post">
-//                                 <div className = "form-group">
-//                                     <label>SKU Description: </label>
-//                                     <input placeholder="skuDescription" name="skuDescription" className="form-control"
-//                                     value={sku.skuDescription} onChange={(event) => onChangeHandler(event)} />
-//                                     {errors.skuDescription && <p style={{ color: "red" }}>{errors.skuDescription}</p>}
-//                                 </div>
-//                                 <br/>
-//                                 <button className='btn btn-primary' onClick={handleValidation}>Update</button>
-//                             </form>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
