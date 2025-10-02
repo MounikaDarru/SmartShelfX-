@@ -45,8 +45,8 @@ const UpdateProductPrice = () => {
         let tempErrors = {};
         let isValid = true;
    
-        if (!product.productPrice.trim()) {
-          tempErrors.productPrice = "Product Price is required";
+        if (!product.purchasePrice.trim()) {
+          tempErrors.purchasePrice = "Product Price is required";
           isValid = false;
         }
 
@@ -62,9 +62,9 @@ const UpdateProductPrice = () => {
                 <br/>
                 <form className="form-box">
                     <div className="form-group">
-                        <label>Product Price</label>
-                        <input type="text" placeholder="productPrice" name="productPrice" value={product.productPrice} onChange={(event) => onChangeHandler(event)}/>
-                        {errors.productPrice && <p>{errors.productPrice}</p>}
+                        <label>Purchase Price</label>
+                        <input type="text" placeholder="purchasePrice" name="purchasePrice" value={product.purchasePrice} onChange={(event) => onChangeHandler(event)}/>
+                        {errors.purchasePrice && <p>{errors.purchasePrice}</p>}
                     </div>
                     <br/>
                     <div style={{ display: 'flex', gap: '10px', justifyContent:'center' }}>

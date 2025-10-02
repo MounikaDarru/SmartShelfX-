@@ -51,47 +51,49 @@ const ViewProduct = () => {
     }
 
     return (
-             <div>
+             <div style={{display:'flex', justifyContent:'center', marginTop:'150px'}}>
                <br></br>
-                <div className = "card col-md-6 offset-md-3">
-                    <h3 className = "text-center"> View Product Details</h3>
-                    <div className = "card-body">
-                    <div className = "row">
-                            <label> Product Id:  &nbsp;
-                             {product.productId}</label>
-                        </div>
-                        <div className = "row">
-                            <label> SKU:  &nbsp;
-                            {product.sku} </label>
-                        </div>
-                        <div className = "row">
-                            <label> Product Name:  &nbsp;
-                            {product.productName} </label>
-                        </div>
-                        <div className = "row">
-                            <label>Purchase Price:  &nbsp;
-                            {product.purchasePrice} </label>
-                        </div>
-                        <div className = "row">
-                            <label> Sales Price:  &nbsp;
-                             {product.salesPrice} </label>
-                        </div>
-                        <div className = "row"> &nbsp;
-                            <label> Re Order Level: &nbsp;
-                             {product.reorderLevel} </label>
-                        </div>
-                        <div className = "row"> &nbsp;
-                            <label> Stock: &nbsp;
-                             {product.stock} </label>
-                        </div>
-                        <div className = "row"> &nbsp;
-                            <label> Vendor: &nbsp;
-                             {product.vendorId} </label>
-                        </div>
-                        <div>
-                        <button className="btn btn-success" onClick={returnBack}>Return</button>                    
-                        </div>
-                  </div>  
+                <div style={{padding:'50px', backgroundColor:'white', borderRadius:'10px', boxShadow:'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width:'500px'}}>
+                    <h3 style={{fontWeight:'bold', textAlign:'center', marginBottom:'30px'}}>Product Details</h3>
+                     <table>
+                        <tbody className="text-left">
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Product Id:</td>
+                                <td style={{padding:'5px 30px'}}>{product.productId}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Product Name:</td>
+                                <td style={{padding:'5px 30px'}}>{product.productName}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>SKU:</td>
+                                <td style={{padding:'5px 30px'}}>{product.sku}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Purchase Price:</td>
+                                <td style={{padding:'5px 30px'}}>{product.purchasePrice}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Sales Price:</td>
+                                <td style={{padding:'5px 30px'}}>{product.salesPrice}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Reorder Level:</td>
+                                <td style={{padding:'5px 30px'}}>{product.reorderLevel}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Stock:</td>
+                                <td style={{padding:'5px 30px'}}>{product.stock}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Vendor Id:</td>
+                                <td style={{padding:'5px 30px'}}>{product.vendorId}</td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     <div style={{display:'flex', justifyContent:'center', fontWeight:'bold', marginTop:'30px'}}>
+                        <button className="btn btn-primary" onClick={returnBack}>CLOSE</button>
+                     </div>
                 </div>
             </div>
         );
@@ -99,3 +101,39 @@ const ViewProduct = () => {
 }
 
 export default ViewProduct;
+//                     <div className = "row">
+//                             <label> Product Id:  &nbsp;
+//                              {product.productId}</label>
+//                         </div>
+//                         <div className = "row">
+//                             <label> SKU:  &nbsp;
+//                             {product.sku} </label>
+//                         </div>
+//                         <div className = "row">
+//                             <label> Product Name:  &nbsp;
+//                             {product.productName} </label>
+//                         </div>
+//                         <div className = "row">
+//                             <label>Purchase Price:  &nbsp;
+//                             {product.purchasePrice} </label>
+//                         </div>
+//                         <div className = "row">
+//                             <label> Sales Price:  &nbsp;
+//                              {product.salesPrice} </label>
+//                         </div>
+//                         <div className = "row"> &nbsp;
+//                             <label> Re Order Level: &nbsp;
+//                              {product.reorderLevel} </label>
+//                         </div>
+//                         <div className = "row"> &nbsp;
+//                             <label> Stock: &nbsp;
+//                              {product.stock} </label>
+//                         </div>
+//                         <div className = "row"> &nbsp;
+//                             <label> Vendor: &nbsp;
+//                              {product.vendorId} </label>
+//                         </div>
+//                         <div>
+//                         <button className="btn btn-success" onClick={returnBack}>Return</button>                    
+//                         </div>
+//                   </div> 
