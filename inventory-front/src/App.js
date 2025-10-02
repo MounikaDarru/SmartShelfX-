@@ -10,6 +10,10 @@ import SKUAddition from './Components/SKUComponent/SKUAddition';
 import SKUReport from './Components/SKUComponent/SKUReport';
 import { SkuUpdate } from './Components/SKUComponent/SKUReport';
 import ProductAddition from './Components/ProductComponent/ProductAddition';
+import AdminProductReport from './Components/ProductComponent/AdminProductReport';
+import UpdateProductPrice  from './Components/ProductComponent/UpdateProductPrice';
+import ViewProduct from './Components/ProductComponent/ViewProduct';
+import ManagerProductReport from './Components/ProductComponent/ManagerProductReport';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
         <Route path="/SkuReport" element={<SKUReport />} />
         <Route path="/update-sku/:id" element={<SkuUpdate />} />
         <Route path="/addProduct" element={<ProductAddition />} />
+        <Route path="/AdminProductReport" element={<AdminProductReport />} />
+        <Route path="/updateProductPrice/:id" element={<UpdateProductPrice />} />
+        <Route path="/viewProduct/:id" element={<ViewProduct />} />
+        <Route path='/ManagerProductReport' element={<ManagerProductReport />} />
         </Routes>
      </BrowserRouter>
     </div>

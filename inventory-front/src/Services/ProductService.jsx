@@ -8,11 +8,11 @@ export const addProduct = (product) => {
 
 
 export const getProductById = (id) => {
-    return axios.get(PRODUCT_URL + '/' + id);
+    return axios.get(PRODUCT_URL + '/product/' + id);
 }
 
 export const removeProduct = (id) => {
-    return axios.delete(PRODUCT_URL + '/deleteProduct' + id);
+    return axios.delete(PRODUCT_URL + '/deleteProduct/' + id);
 }
 
 export const showAllProducts = () => {
@@ -28,5 +28,5 @@ export const generateId = () => {
 }
 
 export const updateProductPrice = (product) => {
-    return axios.put(PRODUCT_URL + '/updateProductPrice' + product);
+    return axios.put(PRODUCT_URL + '/updateProductPrice', product);
 }

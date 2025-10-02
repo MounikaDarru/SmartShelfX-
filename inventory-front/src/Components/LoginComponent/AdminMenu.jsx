@@ -21,8 +21,8 @@ const AdminMenu = () => {
                             <NavDropdown.Item href="/SkuAdd">SKU Addition</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Product" id="product-dropdown">
-                            <NavDropdown.Item href="addProduct">Product Addition</NavDropdown.Item>
-                            <NavDropdown.Item href="">Product List</NavDropdown.Item>
+                            <NavDropdown.Item href="/addProduct">Product Addition</NavDropdown.Item>
+                            <NavDropdown.Item href="/AdminProductReport">Product List</NavDropdown.Item>
                             <NavDropdown.Item href="">Product Analysis</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Stock" id="stock-dropdown">

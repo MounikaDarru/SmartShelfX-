@@ -61,4 +61,9 @@ public class LoginController {
 	public List<String> getUserByRole(@PathVariable String role){
 		return service.getUserByRole(role);
 	}
+
+	@GetMapping("/role")
+	public String getUserRole(){
+		return service.getRole();
+	}
 }

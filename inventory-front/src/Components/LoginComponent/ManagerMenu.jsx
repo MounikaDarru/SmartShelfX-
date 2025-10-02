@@ -2,33 +2,55 @@ import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import '../../AdminView.css';
 
 const ManagerMenu = () => {
-    <div className=".container">
-        <br/>
-        <div  align="center" style={{backgroundColor:'pink'}}>
-          <h1 className = "text-center" style={{color:'magenta'}}><u><i>Inventory Manager Menu</i></u></h1>
+    
+    return (
+        <div className="admin-container">
+            <Navbar expand="lg" className="admin-navbar">
+                <div className="d-flex w-100 justify-content-between align-items-center">
+                    
+                    {/* Left: Brand */}
+                    <div className="navbar-brand mb-0 h1">SmartShelfX</div>
+
+                    {/* Center: Navigation */}
+                    <div className="d-flex justify-content-center flex-grow-1">
+                        <Nav className="mx-auto gap-4">
+                            <NavDropdown title="SKU" id="sku-dropdown">
+                            <NavDropdown.Item href="/SkuReport">SKU List</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="Product" id="product-dropdown">
+                            <NavDropdown.Item href="/ManagerProductReport">Product List</NavDropdown.Item>
+                            <NavDropdown.Item href="">Product Analysis</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="Stock" id="stock-dropdown">
+                            <NavDropdown.Item href="">Stock Issue</NavDropdown.Item>
+                            <NavDropdown.Item href="">Stock Purchase</NavDropdown.Item>
+                            </NavDropdown>
+                            <Nav.Link href="/ShowSingleUser">Show User Details</Nav.Link>
+                        </Nav>
+                    </div>
+
+                    {/* Right: Logout */}
+                    <div>
+                    <Nav.Link href="/" className="logout-link">Logout</Nav.Link>
+                    </div>
+                    
+                </div>
+            </Navbar>
+
+            <div className="admin-content">
+                <div className="admin-hero">
+                    <div>
+                        <h1 className="admin-welcome">Welcome, Admin!</h1>
+                        <p className="admin-subtext">You're now in control of SmartShelfX — your centralized hub for managing SKUs, products, and stock with precision. Navigate through the menu to track inventory, analyze trends, and optimize operations.</p>
+                    </div>
+                    <img src="Admin.png" alt="Admin" />
+                </div>
+            </div>
         </div>
-        <Navbar expand="lg" bg="warning">
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <NavDropdown title="SKU" id="collasible-nav-dropdown"><b>SKU</b>
-                        <NavDropdown.Item href="">SKU List</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Product" id="collasible-nav-dropdown"><b>Product</b>
-                        <NavDropdown.Item href="">Product List</NavDropdown.Item>
-                        <NavDropdown.Item href="">Product Analysis</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Stock" id="collasible-nav-dropdown"><b>Stock</b>
-                        <NavDropdown.Item href="">Stock Issue</NavDropdown.Item>
-                        <NavDropdown.Item href="">Stock Purchase</NavDropdown.Item>
-                    </NavDropdown>
-                    <Nav.Link href="/ShowSingleUser"><b>Show User Details</b></Nav.Link>
-                    <Nav.Link href="/"><b>Logout</b></Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-    </div>
+    )
  
 }
 
