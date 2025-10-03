@@ -43,8 +43,8 @@ const ManagerMenu = () => {
             <div className="admin-content">
                 <div className="admin-hero">
                     <div>
-                        <h1 className="admin-welcome">Welcome, Admin!</h1>
-                        <p className="admin-subtext">You're now in control of SmartShelfX — your centralized hub for managing SKUs, products, and stock with precision. Navigate through the menu to track inventory, analyze trends, and optimize operations.</p>
+                        <h1 className="admin-welcome">Welcome, Manager!</h1>
+                        <p className="admin-subtext">You're now at the helm of SmartShelfX Manager — your all-in-one dashboard for overseeing SKUs, products, stock flow, and user insights. Effortlessly explore SKU listings, dive into product reports and analysis, resolve stock issues, manage purchases, and access user details — all from one streamlined control center. Navigate with confidence and drive smarter decisions across your inventory ecosystem.</p>
                     </div>
                     <img src="Admin.png" alt="Admin" />
                 </div>

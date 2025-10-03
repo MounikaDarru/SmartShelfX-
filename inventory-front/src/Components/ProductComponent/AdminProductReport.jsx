@@ -41,7 +41,9 @@ const AdminProductReport = () => {
     };
 
     const closeDropdown = () => {
-    setActiveDropdownId(null);
+        setTimeout(() => {
+        setActiveDropdownId(null);
+        }, 5000);
     };
 
     return (
@@ -50,7 +52,7 @@ const AdminProductReport = () => {
             <div onClick={returnBack} style={{display: 'flex', justifyContent: 'flex-start', cursor: 'pointer', margin: '20px', marginLeft: '50px', fontWeight: 'bold'}}><ChevronLeft />Back</div>
             </div>
             <div className="container">
-                <div className="header">
+                <div className="product-header">
                     <span>Product Id</span>
                     <span>Vendor Id</span>
                     <span>Product Name</span>
@@ -61,7 +63,7 @@ const AdminProductReport = () => {
                     <span>Actions</span>
                 </div>
                 {productlist.map((product) => (
-                    <div className="item" key={product.productId}>
+                    <div className="product-item" key={product.productId}>
                         <span>{product.productId}</span>
                         <span>{product.vendorId}</span>
                         <span>{product.productName}</span>
@@ -78,19 +80,19 @@ const AdminProductReport = () => {
                                     <button onClick={() => deleteProduct(product.productId)} className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
                                         <Trash size={18} />
                                     </button>
-                                    <button onClick={() => toggleDropdown(product.productId)} className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
+                                    <button onClick={() => toggleDropdown(product.productId)} onMouseLeave={closeDropdown} className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
                                         <EllipsisVertical size={18} />
                                     </button>
                                     {activeDropdownId === product.productId && (
-                                        <div onMouseLeave={closeDropdown} style={{backgroundColor: 'white', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', padding: '10px', borderRadius: '8px', display: 'flex-direction: column', gap: '15px', minWidth: '120px', zIndex: '1'}}>
+                                        <div onMouseLeave={closeDropdown} style={{backgroundColor: 'white', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', padding: '10px', borderRadius: '8px', minWidth: '120px', zIndex: '1'}}>
                                         <Link to={`/viewProduct/${product.productId}`}>
-                                        <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent' }}><View size={18} />  View</button>
+                                        <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><View size={18} />  View</button>
                                         </Link>
                                         <Link to={`/IssueProduct/${product.productId}`}>
-                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent' }}><BadgeAlert size={18} />  Issue</button>
+                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><BadgeAlert size={18} />  Issue</button>
                                         </Link>
                                         <Link to={`/PurchaseProduct/${product.productId}`}>
-                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent' }}><ShoppingCart size={18} />  Purchase</button>
+                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent'}}><ShoppingCart size={18} />  Purchase</button>
                                         </Link>
                                         </div>
                                     )}

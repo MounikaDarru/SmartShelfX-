@@ -33,7 +33,7 @@ public class InventoryUserService implements UserDetailsService {
  
         @Override
 		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		  InventoryUser user=repository.findById(username).get();
+		  	this.user=repository.findById(username).get();
 			this.userId=user.getUsername();
 			this.role=user.getRole();
 			return user;

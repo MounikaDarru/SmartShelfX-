@@ -7,6 +7,7 @@ import {showAllSKUs, removeSKU} from '../../Services/SKUService';
 import { ChevronLeft, Pencil, Trash } from "lucide-react";
 
 import { update } from "../../Services/SKUService";
+import { getUserRole } from "../../Services/LoginService";
 
 export const SkuUpdate = () => {
     const {id} = useParams();
@@ -79,6 +80,7 @@ const SKUReport = () => {
 
     let navigate = useNavigate();
     const [skuList, setSKUList] = useState([]);
+    const [role, setRole] = React.useState("");
 
     const displayAllSKUs=() =>{
         showAllSKUs().then((response)=>{
@@ -88,10 +90,22 @@ const SKUReport = () => {
 
     useEffect(()=>{
         displayAllSKUs();
+        setUserRole();
     },[])
 
-    const returnBack=()=>{
-        navigate('/AdminMenu');
+    const setUserRole = () => {
+        getUserRole().then((response) => {
+            setRole(response.data);
+        })
+    }
+
+    const returnBack = () => {
+        if(role === "Admin"){
+            navigate('/AdminMenu');
+        }
+        else if(role === "Manager"){
+            navigate('/ManagerMenu');
+        }
     }
 
     const deleteSKU=(id)=>{
@@ -108,13 +122,13 @@ const SKUReport = () => {
             <div onClick={returnBack} style={{display: 'flex', justifyContent: 'flex-start', cursor: 'pointer', margin: '20px', marginLeft: '50px', fontWeight: 'bold'}}><ChevronLeft />Back</div>
             </div>
             <div className="container">
-                <div className="header">
+                <div className="sku-header">
                     <span>SKU ID</span>
                     <span>SKU DESCRIPTION</span>
                     <span>ACTIONS</span>
                 </div>
                 {skuList.map((sku) => (
-                    <div className="item" key={sku.skuId}>
+                    <div className="sku-item" key={sku.skuId}>
                         <span>{sku.skuId}</span>
                         <span>{sku.skuDescription}</span>
                         <span>

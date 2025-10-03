@@ -31,38 +31,35 @@ const ShowSingleUser = () => {
     }
 
     return(
-        <div>
-            <br></br>
-                <div className = "container">
-                <div className = "row">
-                    <div className = "card col-md-12 offset-md-3 offset-md-3">
-                        <div className = "card-body">
-                            <h2 className="text-center"><u>User Details</u></h2>
-                            <br/>
-                            <div className = "form-group">
-                                <label>User Id: </label>
-                                <label>{inventoryUser.username} </label>
-                            </div>
-                            <div className = "form-group">
-                                <label>Personal Name: </label>
-                                <label>{inventoryUser.personalName}</label>
-                            </div>
-                            <div className = "form-group">
-                                <label>Email: </label>
-                                <label>{inventoryUser.email}</label>
-                            </div>
-                            <div className = "form-group">
-                                <label>Role: </label>
-                                <label>{inventoryUser.role}</label>
-                            </div>
-                            <div>
-                                <button className="btn btn-warning" onClick={returnBack}>Return</button>
-                            </div>  
-                        </div>
-                    </div>
+         <div style={{display:'flex', justifyContent:'center', marginTop:'150px'}}>
+               <br></br>
+                <div style={{padding:'50px', backgroundColor:'white', borderRadius:'10px', boxShadow:'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width:'500px'}}>
+                    <h3 style={{fontWeight:'bold', textAlign:'center', marginBottom:'30px'}}>User Details</h3>
+                     <table>
+                        <tbody className="text-left">
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>User Id:</td>
+                                <td style={{padding:'5px 30px'}}>{inventoryUser.username}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Personal Name:</td>
+                                <td style={{padding:'5px 30px'}}>{inventoryUser.personalName}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Email:</td>
+                                <td style={{padding:'5px 30px'}}>{inventoryUser.email}</td>
+                            </tr>
+                            <tr>
+                                <td style={{padding:'5px 30px', fontWeight:'500'}}>Role:</td>
+                                <td style={{padding:'5px 30px'}}>{inventoryUser.role}</td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     <div style={{display:'flex', justifyContent:'center', fontWeight:'bold', marginTop:'30px'}}>
+                        <button className="btn btn-primary" onClick={returnBack}>CLOSE</button>
+                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 

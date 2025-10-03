@@ -32,7 +32,7 @@ const ManagerProductReport = () => {
             <div onClick={returnBack} style={{display: 'flex', justifyContent: 'flex-start', cursor: 'pointer', margin: '20px', marginLeft: '50px', fontWeight: 'bold'}}><ChevronLeft />Back</div>
             </div>
             <div className="container">
-                <div className="header">
+                <div className="product-header">
                     <span>Product Id</span>
                     <span>Vendor Id</span>
                     <span>Product Name</span>
@@ -43,7 +43,7 @@ const ManagerProductReport = () => {
                     <span>Actions</span>
                 </div>
                 {productlist.map((product) => (
-                    <div className="item" key={product.productId}>
+                    <div className="product-item" key={product.productId}>
                         <span>{product.productId}</span>
                         <span>{product.vendorId}</span>
                         <span>{product.productName}</span>

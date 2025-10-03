@@ -101,39 +101,3 @@ const ViewProduct = () => {
 }
 
 export default ViewProduct;
-//                     <div className = "row">
-//                             <label> Product Id:  &nbsp;
-//                              {product.productId}</label>
-//                         </div>
-//                         <div className = "row">
-//                             <label> SKU:  &nbsp;
-//                             {product.sku} </label>
-//                         </div>
-//                         <div className = "row">
-//                             <label> Product Name:  &nbsp;
-//                             {product.productName} </label>
-//                         </div>
-//                         <div className = "row">
-//                             <label>Purchase Price:  &nbsp;
-//                             {product.purchasePrice} </label>
-//                         </div>
-//                         <div className = "row">
-//                             <label> Sales Price:  &nbsp;
-//                              {product.salesPrice} </label>
-//                         </div>
-//                         <div className = "row"> &nbsp;
-//                             <label> Re Order Level: &nbsp;
-//                              {product.reorderLevel} </label>
-//                         </div>
-//                         <div className = "row"> &nbsp;
-//                             <label> Stock: &nbsp;
-//                              {product.stock} </label>
-//                         </div>
-//                         <div className = "row"> &nbsp;
-//                             <label> Vendor: &nbsp;
-//                              {product.vendorId} </label>
-//                         </div>
-//                         <div>
-//                         <button className="btn btn-success" onClick={returnBack}>Return</button>                    
-//                         </div>
-//                   </div> 
