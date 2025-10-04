@@ -3,7 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import { useEffect } from "react";
 import {Link} from 'react-router-dom';
 import '../ProductComponent/ProductList.css';
-import { ChevronLeft, View, BadgeAlert, ShoppingCart } from "lucide-react";
+import { ChevronLeft, Eye, BadgeDollarSign, ShoppingCart } from "lucide-react";
 import { showAllProducts, } from "../../Services/ProductService";
 
 
@@ -38,6 +38,7 @@ const ManagerProductReport = () => {
                     <span>Product Name</span>
                     <span>SKU</span>
                     <span>Purchase Price</span>
+                    <span>Sales Price</span>
                     <span>Reorder Level</span>
                     <span>Stock</span>
                     <span>Actions</span>
@@ -49,19 +50,20 @@ const ManagerProductReport = () => {
                         <span>{product.productName}</span>
                         <span>{product.sku}</span>
                         <span>{product.purchasePrice}</span>
+                        <span>{product.salesPrice}</span>
                         <span>{product.reorderLevel}</span>
                         <span>{product.stock}</span>
                         <span>
                             <div style={{ width: '10%' }}>
                                 <div style={{ position: 'relative', display: 'flex', justifyContent: 'flex-start' }}>
                                     <button className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
-                                        <Link to={`/viewProduct/${product.productId}`} style={{ textDecoration: 'none', color: 'black' }}><View size={18} /></Link>
+                                        <Link to={`/viewProduct/${product.productId}`} style={{ textDecoration: 'none', color: 'black' }}><Eye size={18} /></Link>
                                     </button>
                                     <button className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
-                                        <Link to={`/IssueProduct/${product.productId}`} style={{ textDecoration: 'none', color: 'black' }}><BadgeAlert size={18} /></Link>
+                                        <Link to={`/IssueProduct/${product.productId}/2`} style={{ textDecoration: 'none', color: 'black' }}><BadgeDollarSign size={18} /></Link>
                                     </button>
                                     <button className="text-black p-2 rounded-full" style={{ border: 'none', backgroundColor: 'transparent' }}>
-                                        <Link to={`/PurchaseProduct/${product.productId}`} style={{ textDecoration: 'none', color: 'black' }}><ShoppingCart size={18} /></Link>
+                                        <Link to={`/PurchaseProduct/${product.productId}/1`} style={{ textDecoration: 'none', color: 'black' }}><ShoppingCart size={18} /></Link>
                                     </button>
                                 </div>
                             </div>

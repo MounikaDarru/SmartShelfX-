@@ -3,7 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import { useEffect } from "react";
 import {Link} from 'react-router-dom';
 import '../ProductComponent/ProductList.css';
-import { ChevronLeft, Pencil, Trash, View, BadgeAlert, ShoppingCart, EllipsisVertical } from "lucide-react";
+import { ChevronLeft, Pencil, Trash, Eye, BadgeDollarSign, ShoppingCart, EllipsisVertical } from "lucide-react";
 import { showAllProducts, removeProduct } from "../../Services/ProductService";
 
 
@@ -58,6 +58,7 @@ const AdminProductReport = () => {
                     <span>Product Name</span>
                     <span>SKU</span>
                     <span>Purchase Price</span>
+                    <span>Sales Price</span>
                     <span>Reorder Level</span>
                     <span>Stock</span>
                     <span>Actions</span>
@@ -69,6 +70,7 @@ const AdminProductReport = () => {
                         <span>{product.productName}</span>
                         <span>{product.sku}</span>
                         <span>{product.purchasePrice}</span>
+                        <span>{product.salesPrice}</span>
                         <span>{product.reorderLevel}</span>
                         <span>{product.stock}</span>
                         <span>
@@ -86,12 +88,12 @@ const AdminProductReport = () => {
                                     {activeDropdownId === product.productId && (
                                         <div onMouseLeave={closeDropdown} style={{backgroundColor: 'white', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', padding: '10px', borderRadius: '8px', minWidth: '120px', zIndex: '1'}}>
                                         <Link to={`/viewProduct/${product.productId}`}>
-                                        <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><View size={18} />  View</button>
+                                        <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><Eye size={18} />  View</button>
                                         </Link>
-                                        <Link to={`/IssueProduct/${product.productId}`}>
-                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><BadgeAlert size={18} />  Issue</button>
+                                        <Link to={`/IssueProduct/${product.productId}/2`}>
+                                            <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent', marginBottom: '5px' }}><BadgeDollarSign size={18} />  Issue</button>
                                         </Link>
-                                        <Link to={`/PurchaseProduct/${product.productId}`}>
+                                        <Link to={`/PurchaseProduct/${product.productId}/1`}>
                                             <button className="text-black" style={{ border: 'none', backgroundColor: 'transparent'}}><ShoppingCart size={18} />  Purchase</button>
                                         </Link>
                                         </div>
