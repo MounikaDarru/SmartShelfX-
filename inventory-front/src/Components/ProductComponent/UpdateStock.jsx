@@ -2,7 +2,7 @@ import { stockEdit, getProductById } from '../../Services/ProductService';
 import { getUserRole } from '../../Services/LoginService';
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
-import { update } from '../../Services/SKUService';
+import { addStockTransaction } from '../../Services/StockTransactionsService';
 
 const UpdateStock = () => {
     const {id, flag} = useParams();
@@ -28,7 +28,8 @@ const UpdateStock = () => {
             else if(role === "Manager"){
                 navigate('/ManagerProductReport');
             }   
-            });
+        });
+        addStockTransaction(id, flag, quantity);
     }
 
     const setUserRole = () => {
