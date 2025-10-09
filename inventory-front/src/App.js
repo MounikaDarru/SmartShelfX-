@@ -15,6 +15,7 @@ import UpdateProductPrice  from './Components/ProductComponent/UpdateProductPric
 import ViewProduct from './Components/ProductComponent/ViewProduct';
 import ManagerProductReport from './Components/ProductComponent/ManagerProductReport';
 import UpdateStock from './Components/ProductComponent/UpdateStock';
+import StockList from './Components/StockComponent/StockList';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/ManagerProductReport' element={<ManagerProductReport />} />
         <Route path='/IssueProduct/:id/:flag' element={<UpdateStock />} />
         <Route path='/PurchaseProduct/:id/:flag' element={<UpdateStock />} />
+        <Route path='/Stock/:transactionType' element={<StockList />} />
         </Routes>
      </BrowserRouter>
     </div>

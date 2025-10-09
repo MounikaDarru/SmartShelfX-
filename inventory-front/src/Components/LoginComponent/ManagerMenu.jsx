@@ -25,8 +25,8 @@ const ManagerMenu = () => {
                             <NavDropdown.Item href="">Product Analysis</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Stock" id="stock-dropdown">
-                            <NavDropdown.Item href="">Stock Issue</NavDropdown.Item>
-                            <NavDropdown.Item href="">Stock Purchase</NavDropdown.Item>
+                            <NavDropdown.Item href="/Stock/2">Stock Issue</NavDropdown.Item>
+                            <NavDropdown.Item href="/Stock/1">Stock Purchase</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="/ShowSingleUser">Show User Details</Nav.Link>
                         </Nav>

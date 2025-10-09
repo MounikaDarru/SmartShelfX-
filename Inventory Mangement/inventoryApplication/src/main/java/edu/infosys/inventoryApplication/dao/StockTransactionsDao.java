@@ -9,5 +9,5 @@ public interface StockTransactionsDao {
     public Long generateId();
     // public StockTransactions findByTransactionId(Long transactionId);
     public List<StockTransactions> showAllStockTransactions();
-
+    public List<StockTransactions> findByTransactionType(String transactionType);
 }

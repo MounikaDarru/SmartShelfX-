@@ -25,7 +25,7 @@ public class StockTransactionsService {
     @Autowired
     private InventoryUserService service;
 
-    public void processTransaction(String productId, Integer flag, Double quantity) {
+    public void processTransaction(String productId, int flag, Double quantity) {
         Product product = dao.findProductById(productId);
         String userId = service.getUser().getUsername();
         String transactionType = null;

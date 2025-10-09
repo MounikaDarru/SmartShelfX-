@@ -21,7 +21,7 @@ public class StockTransactionsDaoImpl implements StockTransactionsDao {
     public Long generateId() {
         Long id = repository.findMaxTransactionId();
         if (id == null) {
-            return 1L;
+            return 10000L;
         } else {
             return id + 1L;
         }
@@ -30,5 +30,10 @@ public class StockTransactionsDaoImpl implements StockTransactionsDao {
     @Override
     public List<StockTransactions> showAllStockTransactions() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<StockTransactions> findByTransactionType(String transactionType) {
+        return repository.findByTransactionType(transactionType);
     }
 }

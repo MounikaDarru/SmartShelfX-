@@ -7,6 +7,9 @@ export const showAllStockTransactions = () => {
 };
 
 export const addStockTransaction = (productId, flag, quantity) => {
-    const payload = { productId, flag, quantity };
-    return axios.post(STOCK_URL + '/addStockTransaction', payload);
+    return axios.post(STOCK_URL + '/addStockTransaction/'+productId+'/'+quantity+'/'+flag);
+};
+
+export const getStockTransactions = (flag) => {
+    return axios.get(STOCK_URL + '/getStockTransactions/'+flag);
 };
