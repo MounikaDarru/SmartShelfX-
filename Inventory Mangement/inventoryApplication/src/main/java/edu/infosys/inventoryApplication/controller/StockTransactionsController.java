@@ -26,9 +26,14 @@ public class StockTransactionsController {
     @Autowired
     private StockTransactionsDaoImpl stockTransactionsDaoImpl;
 
-    @PostMapping("/addStockTransaction/{productId}/{quantity}/{flag}")
-    public void addTransaction(@PathVariable String productId, @PathVariable Double quantity, @PathVariable int flag) {
-        stockTransactionsService.processTransaction(productId, flag, quantity);
+    @PostMapping("/generateStockTransactionId")
+    public Long generateStockTransactionId() {
+        return stockTransactionsService.generateTransactionId();
+    }
+
+    @PostMapping("/addStockTransaction/{transactionId}/{productId}/{quantity}/{flag}")
+    public void addTransaction(@PathVariable Long transactionId, @PathVariable String productId, @PathVariable Double quantity, @PathVariable int flag) {
+        stockTransactionsService.processTransaction(transactionId, productId, flag, quantity);
     }
 
     @GetMapping("/getAllStockTransactions")

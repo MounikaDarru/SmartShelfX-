@@ -25,7 +25,11 @@ public class StockTransactionsService {
     @Autowired
     private InventoryUserService service;
 
-    public void processTransaction(String productId, int flag, Double quantity) {
+    public Long generateTransactionId() {
+        return stockTransactionsDao.generateId();
+    }
+
+    public void processTransaction(Long transactionId, String productId, int flag, Double quantity) {
         Product product = dao.findProductById(productId);
         String userId = service.getUser().getUsername();
         String transactionType = null;
@@ -40,7 +44,7 @@ public class StockTransactionsService {
         }
 
         StockTransactions transaction = new StockTransactions();
-        transaction.setTransactionId(stockTransactionsDao.generateId());
+        transaction.setTransactionId(transactionId);
         transaction.setTransactionType(transactionType);
         transaction.setProductId(productId);
         transaction.setQuantity(quantity);

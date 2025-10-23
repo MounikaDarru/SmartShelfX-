@@ -2,7 +2,7 @@ import { stockEdit, getProductById } from '../../Services/ProductService';
 import { getUserRole } from '../../Services/LoginService';
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
-import { addStockTransaction } from '../../Services/StockTransactionsService';
+import { addStockTransaction, generateStockTransactionId } from '../../Services/StockTransactionsService';
 
 const UpdateStock = () => {
     const {id, flag} = useParams();
@@ -12,6 +12,10 @@ const UpdateStock = () => {
         productId: id,
         stock: ""
     });
+
+    const [ TransactionValue, setTransactionValue ] = useState(0);
+
+    const [ TransactionId, setTransactionId ] = useState("");
 
     const [errors, setErrors] = useState("");
     const [role, setRole] = useState("");
@@ -29,7 +33,7 @@ const UpdateStock = () => {
                 navigate('/ManagerProductReport');
             }   
         });
-        addStockTransaction(id, flag, quantity);
+        addStockTransaction(TransactionId, id, flag, quantity);
     }
 
     const setUserRole = () => {
@@ -39,6 +43,9 @@ const UpdateStock = () => {
     }
 
     useEffect(() => {
+        generateStockTransactionId().then((response) => {
+            setTransactionId(response.data);
+        });
         setUserRole();
         getProductById(id).then((response) => {
             setProduct(response.data);
@@ -48,6 +55,14 @@ const UpdateStock = () => {
     useEffect(() => {
         setQuantity(parseFloat(product.stock));
     }, [product.stock]);
+
+    useEffect(() => {
+        if (!isNaN(quantity) && product) {
+            setTransactionValue(flag == 2 ? product.salesPrice*quantity : product.purchasePrice*quantity);
+        } else {
+            setTransactionValue(0);
+        }
+    }, [quantity, product, flag]);
 
 
     const handleCancel = () => {
@@ -69,6 +84,11 @@ const UpdateStock = () => {
           isValid = false;
         }
 
+        else if (flag==2 && product.stock - quantity <= product.reorderLevel) {
+            tempErrors.stock = "Stock after transaction cannot be less than Reorder Level";
+            isValid = false;
+        }
+
         setErrors(tempErrors);
         if (isValid) {
           updateStock(event);
@@ -77,13 +97,21 @@ const UpdateStock = () => {
 
     return (
             <div className="register-form-box" style={{diaplay:'flex', justifyContent: 'center', alignItems: 'center', margin: 'auto', marginTop:'200px', padding: '50px', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'}}>
-                <h2 style={{letterSpacing: '3px'}}>Update Price</h2>
+                <h2 style={{letterSpacing: '3px'}}>{flag == 2 ? "Issue Stock" : "Purchase Stock"}</h2>
                 <br/>
                 <form className="form-box">
                     <div className="form-group">
+                        <label>Transaction Id</label>
+                        <input type="text" placeholder="Transaction Id" name="transactionId" value={ TransactionId } disabled/>
                         <label>Stock</label>
-                        <input type="text" placeholder="stock" name="quantity" value={ isNaN(quantity) ? '' : quantity } onChange={(e) => setQuantity(parseFloat(e.target.value))}/>
-                        {errors.purchasePrice && <p>{errors.stock}</p>}
+                        <input type="text" placeholder="stock" name="quantity" value={ isNaN(quantity) ? '' : quantity } 
+                        onChange={(e) => {
+                            setQuantity(parseFloat(e.target.value));
+                            if (errors.stock) {
+                            setErrors((prevErrors) => ({ ...prevErrors, stock: '' }));
+                            }}}/>
+                        <p>{errors.stock}</p>
+                        <p style={{color: 'blue'}}>Transaction Value: {TransactionValue}</p>                
                     </div>
                     <br/>
                     <div style={{ display: 'flex', gap: '10px', justifyContent:'center' }}>
