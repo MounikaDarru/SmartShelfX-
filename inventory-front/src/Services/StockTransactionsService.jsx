@@ -17,3 +17,11 @@ export const addStockTransaction = (transactionId, productId, flag, quantity) =>
 export const getStockTransactions = (flag) => {
     return axios.get(STOCK_URL + '/getStockTransactions/'+flag);
 };
+
+export const getProductWiseTotalSales = () => {
+    return axios.get(STOCK_URL + '/analysis');
+}
+
+export const getDemandByProduct = (productId) => {
+    return axios.get(STOCK_URL + '/analysis/'+productId);
+}

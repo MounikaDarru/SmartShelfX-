@@ -8,12 +8,17 @@ import edu.infosys.inventoryApplication.bean.Product;
 public class ProductService {
     public Product stockEdit(Product product, Double quantity, int flag) {
         Double currentStock = product.getStock();
+        Boolean status = product.getStatus();
+        Double reorderLevel = product.getReorderLevel();
         if (flag == 2) {
             currentStock -= quantity;
+            if(currentStock <= reorderLevel)   status = false;
         } else if (flag == 1) {
             currentStock += quantity;
+            if(currentStock > reorderLevel)    status = true;
         }
         product.setStock(currentStock);
+        product.setStatus(status);
         return product;
     }
 

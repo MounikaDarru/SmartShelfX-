@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.infosys.inventoryApplication.bean.ProductSales;
 import edu.infosys.inventoryApplication.bean.StockTransactions;
 import edu.infosys.inventoryApplication.dao.StockTransactionsDaoImpl;
 import edu.infosys.inventoryApplication.service.StockTransactionsService;
@@ -46,5 +47,15 @@ public class StockTransactionsController {
         if(flag == 1)   return stockTransactionsDaoImpl.findByTransactionType("IN");
         if(flag == 2)   return stockTransactionsDaoImpl.findByTransactionType("OUT");
         return null;
+    }
+
+    @GetMapping("/analysis")
+    public List<ProductSales> getProductWiseTotalSales(){
+        return stockTransactionsDaoImpl.getProductWiseTotalSale();
+    }
+
+    @GetMapping("/analysis/{productId}")
+    public List<Double> getDemandByProduct(@PathVariable String productId){
+        return stockTransactionsDaoImpl.getDemandByProduct(productId);
     }
 }

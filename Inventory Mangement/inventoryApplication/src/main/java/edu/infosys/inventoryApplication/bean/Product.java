@@ -14,6 +14,7 @@ public class Product {
     private Double salesPrice;
     private Double reorderLevel;
     private Double stock;
+    private Boolean status;
 
     public Product() {
         super();
@@ -83,5 +84,11 @@ public class Product {
         this.stock = stock;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
 
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 }

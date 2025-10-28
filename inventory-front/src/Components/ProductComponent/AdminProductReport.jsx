@@ -64,7 +64,7 @@ const AdminProductReport = () => {
                     <span>Actions</span>
                 </div>
                 {productlist.map((product) => (
-                    <div className="product-item" key={product.productId}>
+                    <div className="product-item" style={{backgroundColor:product.status===false ? '#ffa5adff':'white'}} key={product.productId}>
                         <span>{product.productId}</span>
                         <span>{product.vendorId}</span>
                         <span>{product.productName}</span>

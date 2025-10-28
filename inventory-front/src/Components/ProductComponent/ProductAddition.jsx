@@ -11,7 +11,8 @@ const ProductAddition = () => {
         sku: "",
         purchasePrice: "",
         reorderLevel: "",
-        stock: ""
+        stock: "",
+        status: true
     })
 
     let navigate = useNavigate();
@@ -26,6 +27,7 @@ const ProductAddition = () => {
 
     const saveProduct = (event) => {
             event.preventDefault();
+            if(product.stock <= product.reorderLevel)   product.status = false;
             addProduct(product).then((response)=>{
             alert("New Product Added");
             navigate('/AdminMenu');    
