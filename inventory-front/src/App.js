@@ -16,6 +16,7 @@ import ViewProduct from './Components/ProductComponent/ViewProduct';
 import ManagerProductReport from './Components/ProductComponent/ManagerProductReport';
 import UpdateStock from './Components/ProductComponent/UpdateStock';
 import StockList from './Components/StockComponent/StockList';
+import ProductAnalysis from './Components/ProductComponent/ProductAnalysis';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path='/IssueProduct/:id/:flag' element={<UpdateStock />} />
         <Route path='/PurchaseProduct/:id/:flag' element={<UpdateStock />} />
         <Route path='/Stock/:transactionType' element={<StockList />} />
+        <Route path='/productAnalysis' element={<ProductAnalysis />} />
         </Routes>
      </BrowserRouter>
     </div>

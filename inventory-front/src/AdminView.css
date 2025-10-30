@@ -96,3 +96,35 @@
   width:600px;
   height: auto;
 }
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.submenu-toggle {
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-top: -8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  min-width: 180px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.submenu-icon {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.dropdown-submenu:hover .submenu {
+  display: block;
+}
